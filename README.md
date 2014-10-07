@@ -1,6 +1,6 @@
 # com.cerema.annuaire
 
-## Annuaire CEREMA 2
+## Annuaire CEREMA
 
 Annuaire du CEREMA-DTERMED
 
