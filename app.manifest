@@ -1,0 +1,74 @@
+{
+    "namespace": "com.cerema.annuaire",
+    "git": "https://github.com/CEREMA/com.cerema.annuaire.git",
+    "title": "Annuaire CEREMA",
+    "description": "Annuaire du CEREMA-DTERMED",
+    "platform": "desktop",
+    "targets": [
+        "webapp"
+    ],
+    "uid": "7233e9ba-bb99-4f37-9df4-0517bd96b712",
+    "version": "1.00",
+    "build": "0",
+    "copyright": "Copyright (c) 2014 By CEREMA",
+    "license": "BSD",
+    "author": {
+        "name": "Stéphane Zucatti",
+        "mail": "stephane.zucatti@cerema.fr",
+        "twitter": "@mydearsz",
+        "web": "",
+        "github": "http://github.com/zucatti"
+    },
+    "team": {
+        "debugger": [],
+        "tester": []
+    },
+    "langs": [
+        "en",
+        "fr"
+    ],
+    "frameworks": [
+        {
+            "name": "ext",
+            "version": "4.2.1",
+            "src": "http://cdn.sencha.com/ext/gpl/{version}/ext-all-debug.js",
+            "res": "http://cdn.sencha.com/ext/gpl/{version}/resources/css/ext-all.css"
+        },
+        {
+            "name": "jquery",
+            "version": "2.0.3",
+            "src": "http://cdnjs.cloudflare.com/ajax/libs/jquery/{version}/jquery.js"
+        }
+    ],
+    "auth": [
+        "CAS"
+    ],
+    "paths": {},
+    "controllers": [
+        "CMain"
+    ],
+    "modules": [
+        "Ext.ux.grid.column.ProgressBar",
+        "Ext.ux.GMapPanel",
+        "Ext.ux.FilterBox"
+    ],
+    "plugins": [],
+    "api": [
+        "bpclight"
+    ],
+    "packages": [
+        "msexcel-builder"
+    ],
+    "icon": {
+        "background": "#FFFFFF",
+        "file": "app.png"
+    },
+    "splashscreen": {
+        "background": "#FFFFFF",
+        "color": "orange",
+        "file": "app.png"
+    },
+    "server": {
+        "port": 3000
+    }
+}

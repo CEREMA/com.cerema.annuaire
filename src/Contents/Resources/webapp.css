@@ -1,0 +1,60 @@
+.BackgroundSystem
+{
+	background-image:url(webapp/defaultdesktop.png);
+}
+
+.qxAboutLogo
+{
+	background-image:url(startup/logo.png);
+	background-repeat:no-repeat;
+	background-position:center center;	
+	background-size: 128px 128px;
+	width: 128px;
+	height: 128px;	
+}
+
+.qxIcon
+{
+	background-image:url(webapp/ico.png);
+	background-repeat:no-repeat;
+	background-position:center center;	
+	background-size: 16px 16px;
+	width: 16px;
+	height: 16px;	
+}
+
+.mnu_preferences
+{
+	background-image:url(webapp/Preferences.png);
+}
+
+.CPhoto
+{
+	border: 1px solid black;
+	background-image:url(webapp/User.png);
+	background-size:100% 100%;
+	background-repeat:no-repeat;	
+	width:120px;
+	height:160px;
+}
+
+.CNomPrenom
+{
+	width: 100%;
+	font-family: Verdana;
+	font-size: 20px
+}
+
+.CPoste
+{
+	width: 100%;
+	font-family: Verdana;
+	font-size: 12px
+}
+
+.CLabel
+{
+	border-bottom: 1px dashed #BBBBBB;
+	font-family: verdana;
+	font-size:14px;
+}
