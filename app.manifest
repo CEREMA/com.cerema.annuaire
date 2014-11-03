@@ -53,6 +53,9 @@
         "Ext.ux.FilterBox"
     ],
     "plugins": [],
+    "db": [
+        "bpclight"
+    ],
     "api": [
         "bpclight"
     ],
