@@ -28,7 +28,9 @@ var speech = Ext.create('Ext.ux.SpeechRecognition', {
 			if (tab.indexOf('cherche')>-1) token.push('SEARCH');
 			if (tab.indexOf('service')>-1) {
 				token.push('subdis');
-				token.push(tab[tab.indexOf('service')+1]);
+				tab.splice(0,tab.indexOf('service')+1);
+				token=token.concat(tab);
+				console.log(token);
 				var u = new SpeechSynthesisUtterance("OK ! Je cherche le service que vous avez demandé.");
 				u.lang = 'fr-fr';
 				speechSynthesis.speak(u);			
