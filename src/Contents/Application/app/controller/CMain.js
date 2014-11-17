@@ -173,10 +173,6 @@ App.controller.define('CMain', {
 	onLoad: function()
 	{
 		App.loadAPI("http://maps.google.com/maps/api/js?sensor=false&callback=GMap");
-		var attribs = {
-			xWebkitSpeech: "x-webkit-speech" 
-		};
-        App.get('textfield#searchme').set(attribs);
 	}	
 
 	
