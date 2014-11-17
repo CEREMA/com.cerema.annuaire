@@ -141,6 +141,10 @@ App.view.define('VMain', {
 			border: true,
 			itemId: "GridAgents",
 			tbar: [
+				{
+					xtype: "textfield",
+					width: 200
+				},
 				'->',
 				{
 					text: "Filtrer",
