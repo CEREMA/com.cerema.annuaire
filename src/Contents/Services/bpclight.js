@@ -55,6 +55,7 @@ bpclight = {
 	speech: function(o,cb)
 	{
 		var db=bpclight.using('db');
+		console.log(o);
 		if (o.indexOf('SEARCH')) {
 			if (o.indexOf('subdis')) {
 				console.log('select * from subdis where archive=0 and libsubc="'+o[2]+'" order by LibSub');
