@@ -1,3 +1,4 @@
+
 function GMap(l,m)
 {
 	var TMap={};
@@ -19,11 +20,29 @@ var speech = Ext.create('Ext.ux.SpeechRecognition', {
 	logFinalOnly: true,
 	chainTranscripts: true,
 	listeners: {
-		result: function( speechObj, store, rawResults, e ){
-			alert( speech.getCurrentTranscript() );
-		},
 		end: function( speechObj, timeStamp, e ) {
-			alert( '<strong>Final Transcript: </strong>' + speech.getCurrentTranscript() );
+			var tab=speech.getCurrentTranscript().split(' ');
+			console.log(tab);
+			var token=[];
+			if (tab.indexOf('recherche')>-1) token.push('SEARCH');
+			if (tab.indexOf('cherche')>-1) token.push('SEARCH');
+			if (tab.indexOf('service')>-1) {
+				token.push('subdis');
+				token.push(tab[tab.indexOf('service')+1]);
+				var u = new SpeechSynthesisUtterance("OK ! Je cherche le service que vous avez demandé.");
+				u.lang = 'fr-fr';
+				speechSynthesis.speak(u);			
+				App.bpclight.speech(token,function(err,o) {
+					console.log(err);
+					console.log(o);
+				});
+			};
+			console.log(token);
+			if (token.length==0) {
+				var u = new SpeechSynthesisUtterance('Je n\'ai pas compris ! Veuillez reformuler la demande...');
+				u.lang = 'fr-fr';
+				speechSynthesis.speak(u);			
+			}
 		}
 	}
 });
@@ -79,7 +98,16 @@ App.controller.define('CMain', {
 	},	
 	onSpeechGet: function()
 	{
-		speech.start();
+		if (App.get('mainform button#speechget').getText()=="Recherche vocale") {
+			var u = new SpeechSynthesisUtterance('Que puis je faire pour vous');
+			u.lang = 'fr-fr';
+			speechSynthesis.speak(u);
+			speech.start();
+			App.get('mainform button#speechget').setText("Stop");
+		} else {
+			speech.stop();
+			App.get('mainform button#speechget').setText("Recherche vocale");
+		}
 	},
 	onBtnExportClick: function()
 	{
@@ -173,6 +201,7 @@ App.controller.define('CMain', {
 	onLoad: function()
 	{
 		App.loadAPI("http://maps.google.com/maps/api/js?sensor=false&callback=GMap");
+
 	}	
 
 	
