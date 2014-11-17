@@ -12,6 +12,22 @@ function GMap(l,m)
 	TMap.marker.setMap(TMap.map);
 };
 
+var speech = Ext.create('Ext.ux.SpeechRecognition', {
+	maxAlternatives: 2,
+	continuous: true,
+	interimResults: true,
+	logFinalOnly: true,
+	chainTranscripts: true,
+	listeners: {
+		result: function( speechObj, store, rawResults, e ){
+			alert( speech.getCurrentTranscript() );
+		},
+		end: function( speechObj, timeStamp, e ) {
+			alert( '<strong>Final Transcript: </strong>' + speech.getCurrentTranscript() );
+		}
+	}
+});
+
 App.controller.define('CMain', {
 
 	views: [
@@ -32,20 +48,23 @@ App.controller.define('CMain', {
 	{
 
 		this.control({
-			"menu>menuitem": {
+			"mainform menu>menuitem": {
 				click: "Menu_onClick"
 			},
-			"treepanel#TreePanel": {
+			"mainform treepanel#TreePanel": {
 				itemclick: "tree_onclick"
 			},
-			"grid#GridAgents": {
+			"mainform grid#GridAgents": {
 				itemclick: "grid_onclick"
 			},
-			"button#BtnFilter" : {
+			"mainform button#BtnFilter" : {
 				click: "onFilterClick"
 			},
-			"button#BtnExport" : {
+			"mainform button#BtnExport" : {
 				click: "onBtnExportClick"
+			},
+			"mainform button#speechget" : {
+				click: "onSpeechGet"
 			}
 		});
 		
@@ -58,6 +77,10 @@ App.controller.define('CMain', {
 			Ext.Msg.alert('Status', 'Click event on '+p.itemId);
 		};
 	},	
+	onSpeechGet: function()
+	{
+		speech.start();
+	},
 	onBtnExportClick: function()
 	{
 		Auth.login(function(user) {
@@ -150,6 +173,10 @@ App.controller.define('CMain', {
 	onLoad: function()
 	{
 		App.loadAPI("http://maps.google.com/maps/api/js?sensor=false&callback=GMap");
+		var attribs = {
+			xWebkitSpeech: "x-webkit-speech" 
+		};
+        App.get('textfield#searchme').set(attribs);
 	}	
 
 	

@@ -143,7 +143,13 @@ App.view.define('VMain', {
 			tbar: [
 				{
 					xtype: "textfield",
+					itemId: "searchme",
 					width: 200
+				},
+				{
+					xtype: "button",
+					text: "Recherche",
+					itemId: "speechget"
 				},
 				'->',
 				{
