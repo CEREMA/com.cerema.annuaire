@@ -59,7 +59,7 @@ bpclight = {
 		if (!o[2]) cb("NOT_FOUND",null); else {
 			if (o.indexOf('SEARCH')>-1) {
 				if (o.indexOf('subdis')>-1) {
-					o.splice(0,o.indexOf('subdis'));
+					o.splice(0,o.indexOf('subdis')+1);
 					console.log('select * from subdis where archive=0 and libsub="'+o.join(' ')+'" order by LibSub');
 					db.model('bpclight','select * from subdis where archive=0 and libsub="'+o.join(' ')+'" order by LibSub',cb);
 				};
