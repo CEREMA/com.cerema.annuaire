@@ -11,6 +11,10 @@ bpclight = {
 		var db=bpclight.using('db');
 		db.model('bpclight','select * from roles order by LibRol',cb);
 	},
+	getPhoto: function(o,cb)
+	{
+		Agents.using('db').query('bpclight','select trombi from trombi where kage='+o,cb);	
+	},	
 	getEtablissements: function(o,cb)
 	{
 		var db=bpclight.using('db');
