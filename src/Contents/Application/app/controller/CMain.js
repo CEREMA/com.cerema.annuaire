@@ -13,42 +13,6 @@ function GMap(l,m)
 	TMap.marker.setMap(TMap.map);
 };
 
-var speech = Ext.create('Ext.ux.SpeechRecognition', {
-	maxAlternatives: 2,
-	continuous: true,
-	interimResults: true,
-	logFinalOnly: true,
-	chainTranscripts: true,
-	listeners: {
-		end: function( speechObj, timeStamp, e ) {
-			var tab=speech.getCurrentTranscript().split(' ');
-			console.log(tab);
-			var token=[];
-			if (tab.indexOf('recherche')>-1) token.push('SEARCH');
-			if (tab.indexOf('cherche')>-1) token.push('SEARCH');
-			if (tab.indexOf('service')>-1) {
-				token.push('subdis');
-				tab.splice(0,tab.indexOf('service')+1);
-				token=token.concat(tab);
-				console.log(token);
-				var u = new SpeechSynthesisUtterance("OK ! Je cherche le service que vous avez demandé.");
-				u.lang = 'fr-fr';
-				speechSynthesis.speak(u);			
-				App.bpclight.speech(token,function(err,o) {
-					console.log(err);
-					console.log(o);
-				});
-			};
-			console.log(token);
-			if (token.length==0) {
-				var u = new SpeechSynthesisUtterance('Je n\'ai pas compris ! Veuillez reformuler la demande...');
-				u.lang = 'fr-fr';
-				speechSynthesis.speak(u);			
-			}
-		}
-	}
-});
-
 App.controller.define('CMain', {
 
 	views: [
