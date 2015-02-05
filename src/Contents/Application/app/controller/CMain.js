@@ -77,6 +77,9 @@ App.controller.define('CMain', {
 			},
 			"mainform grid#GridAgents": {
 				itemclick: "grid_onclick"
+			},
+			"mainform ux-searchbox#searchbox" : {
+				click: "onSearch"
 			}
 		});
 		
@@ -89,47 +92,13 @@ App.controller.define('CMain', {
 			Ext.Msg.alert('Status', 'Click event on '+p.itemId);
 		};
 	},	
-	onSpeechGet: function()
+	onSearch: function(v)
 	{
-		if (App.get('mainform button#speechget').getText()=="Recherche vocale") {
-			var u = new SpeechSynthesisUtterance('Que puis je faire pour vous');
-			u.lang = 'fr-fr';
-			speechSynthesis.speak(u);
-			speech.start();
-			App.get('mainform button#speechget').setText("Stop");
-		} else {
-			speech.stop();
-			App.get('mainform button#speechget').setText("Recherche vocale");
-		}
-	},
-	onBtnExportClick: function()
-	{
-		Auth.login(function(user) {
-			console.log(user);
-			var items=App.get('grid#GridAgents').getStore().data.items;
-			var kage=[];
-			for (var i=0;i<items.length;i++) kage.push(items[i].data.Kage);
-			Ext.Ajax.request({
-				url: '/export',
-				params: {
-					kage: kage.join(',')
-				},
-				success: function(response){
-					var url=response.responseText;
-					var iframe=document.createElement('iframe');
-					iframe.src=url;
-					document.getElementsByTagName('body')[0].appendChild(iframe);
-				}
-			});
-		});
-	},
-	onFilterClick: function()
-	{
-		App.get('FilterBox#FilterPanel').store=App.get('grid#GridAgents').getStore();
-		if (App.get('FilterBox#FilterPanel').isVisible())
-		App.get('FilterBox#FilterPanel').hide();
-		else
-		App.get('FilterBox#FilterPanel').show();
+		var grid=App.get('grid#GridAgents');
+		grid.getStore().getProxy().extraParams={
+			nom: v+"%"
+		};
+		grid.getStore().load();
 	},
 	grid_onclick: function( p, record, item, index )
 	{

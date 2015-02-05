@@ -48,10 +48,7 @@
         "CMain"
     ],
     "modules": [
-        "Ext.ux.grid.column.ProgressBar",
-        "Ext.ux.GMapPanel",
-        "Ext.ux.FilterBox",
-        "Ext.ux.SpeechRecognition"
+        "Ext.ux.form.SearchBox"
     ],
     "plugins": [],
     "db": [

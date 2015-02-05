@@ -42,98 +42,6 @@ App.view.define('VMain', {
 			})			
 		},
 		{
-			xtype: "FilterBox",
-			itemId: "FilterPanel",
-			fields: [
-				{
-					name: "Nom",
-					field: "agents.nom",
-					type: "text"
-				},
-				{
-					name: "Prénom",
-					field: "agents.prenom",
-					type: "text"				
-				},
-				{
-					name: "Agent actif",
-					field: "agents.actif",
-					type: "boolean"
-				},
-				{
-					name: "Fonction",
-					field: "roles.krol",
-					type: "choice",
-					model: "mFonctions",
-					display: "LibRol",
-					value: "Krol"
-				},
-				{
-					name: "Catégorie",
-					field: "grades.kcgr",
-					type: "choice",
-					model: "mCategories",
-					display: "LibCgr",
-					value: "Kcgr"				
-				},
-				{
-					name: "Grades",
-					field: "grades.kgra",
-					type: "choice",
-					model: "mGrades",
-					display: "LibGra",
-					value: "Kgra"								
-				},
-				{
-					name: "Date de naissance",
-					field: "agents.datnai",
-					type: "date"
-				},
-				{
-					name: "Bâtiment",
-					field: "batiments.kbat",
-					type: "choice",
-					model: "mBatiments",
-					display: "LibBatC",
-					value: "Kbat"
-				},
-				{
-					name: "Téléphone",
-					field: "agents.telephone",
-					type: "text"
-				},				
-				{
-					name: "Portable",
-					field: "agents.portable",
-					type: "text"
-				},			
-				{
-					name: "Etablissement",
-					field: "etablissements.kets",
-					type: "choice",
-					model: "mEtablissements",
-					display: "LibEts",
-					value: "Kets"
-				},
-				{
-					name: "Département",
-					field: "unites.kuni",
-					type: "choice",
-					model: "mDepartements",
-					display: "LibUni",
-					value: "Kuni"
-				},				
-				{
-					name: "Service",
-					field: "subdis.ksub",
-					type: "choice",
-					model: "mServices",
-					display: "LibSub",
-					value: "Ksub"
-				}				
-			]			
-		},
-		{
 			region: "center",			
 			split:true,
 			width: 350,	
@@ -142,9 +50,12 @@ App.view.define('VMain', {
 			itemId: "GridAgents",
 			tbar: [
 				{
-					xtype: "textfield",
-					itemId: "searchme",
-					width: 200
+					xtype: 'ux-searchbox',
+					width: 200,
+					triggerCls : Ext.baseCSSPrefix + 'form-search-trigger',
+					itemId: 'searchbox',
+					padding:4,
+					width: 150
 				},
 				{
 					xtype: "button",
