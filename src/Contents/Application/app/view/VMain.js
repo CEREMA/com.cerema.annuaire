@@ -149,17 +149,10 @@ App.view.define('VMain', {
 				{
 					xtype: "button",
 					text: "Recherche vocale",
-					itemId: "speechget"
+					itemId: "speechget",
+					disabled: true
 				},
-				'->',
-				{
-					text: "Filtrer",
-					itemId: "BtnFilter"
-				},
-				{
-					text: "Exporter",
-					itemId: "BtnExport"
-				}
+				'->'
 			],
 			columns:[
 				{ 

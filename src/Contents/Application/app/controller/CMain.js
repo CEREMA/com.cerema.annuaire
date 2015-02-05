@@ -77,15 +77,6 @@ App.controller.define('CMain', {
 			},
 			"mainform grid#GridAgents": {
 				itemclick: "grid_onclick"
-			},
-			"mainform button#BtnFilter" : {
-				click: "onFilterClick"
-			},
-			"mainform button#BtnExport" : {
-				click: "onBtnExportClick"
-			},
-			"mainform button#speechget" : {
-				click: "onSpeechGet"
 			}
 		});
 		
