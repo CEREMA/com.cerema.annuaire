@@ -14,7 +14,6 @@ Manifest = function()
 		name: APP_NAMESPACE,
 		
 		appFolder: Ext.Loader.getPath('Contents'),	
-		autoCreateViewport: true,
 
 		controllers: Settings.CONTROLLERS,
 		
