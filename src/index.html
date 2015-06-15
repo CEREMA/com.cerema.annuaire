@@ -181,7 +181,6 @@
 			-o-animation-name: slideOutUp;
 			animation-name: slideOutUp;
 		}
-	.omneedia-overlay{background-color: rgba(0, 0, 0, 0.8);z-index: 999999;position:absolute;left:0px;top:0px;width:100%;height:100%;display:none;}
 	</style>
 	</head>
 	<body class="animated2 fadeIn">	
@@ -222,11 +221,16 @@
 		</script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.js" type="text/javascript" charset="utf-8"></script>		
 		<script>
+		var bootstraploader=function(tab,i,cb) {
+			if (i<=tab.length) require([tab[i]],function(){
+				bootstraploader(tab,i+1,cb);
+			}); else cb();
+		};		
 		__SESSION__=-1;
 		__COUNTER__=-1;
 		setTimeout(function(){
 			require(["Contents/Settings"], function() {
-				require(Settings.FRAMEWORKS, function(){
+				bootstraploader(Settings.FRAMEWORKS, 0, function(){
 					setInterval(function() {
 						$.ajax({
 							url: "/session"
