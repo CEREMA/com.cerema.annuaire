@@ -184,6 +184,7 @@
 </style>
 	</head>
 	<body class="animated2 fadeIn">	
+		<div class="omneedia-overlay"></div>
 		<div id="bootstrap" class="animated2 fadeIn">
 			<div class="SystemScreen front face">
 				<div id="appLoadingFailed"></div>
@@ -229,9 +230,11 @@
 						$.ajax({
 							url: "/session"
 						}).done(function( data ) {
-							console.log(data);
+							$('.omneedia-overlay').hide();
+							if (__SESSION__==-1) __SESSION__=data.session;
+							if (__SESSION__!=data.session) location.reload();
 						}).fail(function() {
-							console.log( "error" );
+							$('.omneedia-overlay').show();
 						});
 					},1000);
 					require(Settings.LIBRARIES,function() {
