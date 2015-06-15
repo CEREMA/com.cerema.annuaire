@@ -220,6 +220,8 @@
 		</script>
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.js" type="text/javascript" charset="utf-8"></script>		
 		<script>
+		__SESSION__=-1;
+		__COUNTER__=-1;
 		setTimeout(function(){
 			require(["Contents/Settings"], function() {
 				require(Settings.FRAMEWORKS, function(){
@@ -228,8 +230,8 @@
 							url: "/session"
 						}).done(function( data ) {
 							console.log(data);
-							var data=JSON.parse(data);
-							console.log(data);
+						}).fail(function() {
+							console.log( "error" );
 						});
 					},1000);
 					require(Settings.LIBRARIES,function() {
